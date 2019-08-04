@@ -23,8 +23,7 @@ def mss_grab_screen():
         while(True):
 
             image = grabScreenImage();
-            #printscreen = np.array(image)
-            #highlightinimage(image, 420, 275)
+            highlightInImage(image, 420, 275)
             cv2.imshow(WINDOW_NAME, cv2.cvtColor(image, cv2.COLOR_BGR2RGB))
 
             # exit signal

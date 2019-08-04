@@ -67,7 +67,7 @@ def grabScreenImage():
     return np.array(image);
 
 # highlight in image from np.array()
-def highlightInImage(img, xcoord, ycoord):
+def highlightInImage(img, ycoord, xcoord):
     for i in range(ycoord , ycoord+60):
         for j in range(xcoord , xcoord+50):
             img[i][j] = np.array([0,0,0])
