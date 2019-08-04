@@ -8,11 +8,6 @@ from PIL import Image
 sct = mss()
 monitorSelection = sct.monitors[1]
 monitorFormat = {"top": 200, "left": 2200, "width": 805, "height": 630}
-
-#WINDOW_NAME='wind1'
-#cv2.namedWindow(WINDOW_NAME)
-#cv2.moveWindow(WINDOW_NAME, 20, 20)
-#
 THRESHOLD_MATCH_TEMPLATE = 0.8;
 
 # receive the "cv2.absdiff" between 2 images in float[]
@@ -71,14 +66,8 @@ def grabScreenImage():
     image = Image.frombytes('RGB', sct_img.size, sct_img.bgra, 'raw', 'BGRX')
     return np.array(image);
 
-def printImage(cv2, img):
-    cv2.imshow(WINDOW_NAME, cv2.cvtColor(img, cv2.COLOR_BGR2RGB))
-
 # highlight in image from np.array()
 def highlightInImage(img, xcoord, ycoord):
     for i in range(ycoord , ycoord+60):
         for j in range(xcoord , xcoord+50):
             img[i][j] = np.array([0,0,0])
-
-def closeImageDisplay(cv2):
-    cv2.destroyAllWindows()
