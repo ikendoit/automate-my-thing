@@ -77,8 +77,6 @@ def grabScreenImage():
     image = Image.frombytes('RGB', sct_img.size, sct_img.bgra, 'raw', 'BGRX')
     return np.array(image);
 
-
-
 # highlight in image from np.array()
 def highlightInImage(img, ycoord, xcoord):
     for i in range(ycoord , ycoord+60):
@@ -153,5 +151,3 @@ def moveToObject(cv2, screen, image_object, offSetY=0, offSetX=0, threshold=0.6)
     IS_DEBUG and highlightInImage(screen, target_object[0], target_object[1])
 
     return positionToObject((target_object[0]+offSetY, target_object[1]+offSetX), (445, 300))
-
-

@@ -7,9 +7,9 @@ from PIL import Image
 import cv2
 import time
 import pyautogui as pag
-from utils import *
 import os
 import sys
+from utils import *
 
 ASSETS_REWARDER             = cv2.imread("./assets/rewarder.png");
 ASSETS_PET_YARD             = cv2.imread("./assets/pet-yard.png");
@@ -42,10 +42,10 @@ def accessRewardRoom(cv2, screen):
     return True;
 
 def moveToLoginSeer(cv2, screen):
-    pag.keyDown('ctrl')
-    keyPress('w')
-    pag.keyUp('ctrl')
-    sys.exit(0)
+    #pag.keyDown('ctrl')
+    #keyPress('w')
+    #pag.keyUp('ctrl')
+    #sys.exit(0)
     keyPress("w")
     keyPress("a")
     login_reward_button = getCoordTemplate(cv2, ASSETS_LOGIN_SEER_BUTTON, screen, 0.8)
@@ -89,8 +89,6 @@ def select_calendar_dates(screen, cv2):
         return;
 
     (y, x) = login_reward_title
-
-    # position on the first date in calendar
 
     pag.PAUSE = 0.1
     for i in range(1, 8):

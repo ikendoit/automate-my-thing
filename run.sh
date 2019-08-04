@@ -3,10 +3,10 @@
 type=$1
 debug=FALSE
 
-count = 0;
+#count=0;
 
-while true; do
-	google-chrome realmofthemadgod.com
+#while true; do
+	google-chrome https://www.realmofthemadgod.com
 
 	case $1 in
 		'fight')
@@ -21,8 +21,8 @@ while true; do
 	esac
 
 	sleep 2
-	((count=count+1))
-	echo "$count"
-done;
+	#((count=count+1))
+	#echo "$count"
+#done;
 
-echo "final count: $count"
+#echo "final count: $count"

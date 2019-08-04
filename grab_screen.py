@@ -27,7 +27,6 @@ currentMode = None # MAP_SELECTION; GAME_HOME; CHAR_SELECTION;
 def detectMode(image):
 
     global currentMode;
-
     isIntroMenu             = None
     isCharSelection         = None
     isAtUserProfileBar      = None
@@ -43,19 +42,22 @@ def detectMode(image):
         pag.click(x=config.SCREEN_LEFT_PADDING+isIntroMenu[1]+140, y=config.SCREEN_TOP_PADDING+isIntroMenu[0] + 20)
         currentMode = "CHAR_SELECTION"
         return;
+
     if currentMode == "CHAR_SELECTION" and isCharSelection is not None:
         pag.click(x=config.SCREEN_LEFT_PADDING+isCharSelection[1]+140, y=config.SCREEN_TOP_PADDING+isCharSelection[0] + 20)
         currentMode == "GAME_HOME"
         return;
-    if AUTO_MODE == 'LOGIN' and (currentMode == "GAME_HOME" or isAtUserProfileBar is not None):
 
+    if AUTO_MODE == 'LOGIN' and (currentMode == "GAME_HOME" or isAtUserProfileBar is not None):
         access_calendar_from_home(image, cv2)
         currentMode == "GAME_HOME" # Could also change AUTO_MODE to "FIGHT_MODE"
         return;
+
     if AUTO_MODE == 'FIGHT' and (currentMode == "GAME_HOME" or isAtUserProfileBar is not None):
         go_to_fight_from_home(image, cv2)
         currentMode == "GAME_HOME" # or FIGHT_MODE
         return;
+
     print("not sure where we are in main :(");
     time.sleep(1.8)
 
