@@ -1,0 +1,6 @@
+#!/usr/bin/env python3 
+
+SCREEN_LEFT_PADDING =2200 
+SCREEN_TOP_PADDING  =190
+CANVAS_WIDTH        =805
+CANVAS_HEIGHT       =630
