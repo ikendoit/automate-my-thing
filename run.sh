@@ -7,7 +7,7 @@ count=1;
 
 while true; do
 
-	if [ $XDG_SESSION_DESKTOP = 'ubuntu' ]; then
+	if [ "$XDG_SESSION_DESKTOP" == "ubuntu" ]; then
 		google-chrome https://www.realmofthemadgod.com
 	else 
 		open -a "Google Chrome" https://www.realmofthemadgod.com
@@ -25,7 +25,7 @@ while true; do
 			;;
 	esac
 
-	if [ $? = 0 ]; then
+	if [ $? == "0" ]; then
 		echo "finished, got the calendar, after $count tries"
 		break;
 	fi
