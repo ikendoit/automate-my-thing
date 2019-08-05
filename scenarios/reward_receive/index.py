@@ -18,7 +18,7 @@ ASSETS_LOGIN_SEER_NPC       = cv2.imread("./assets/login-seer-npc.png");
 ASSETS_LOGIN_SEER_BUTTON    = cv2.imread("./assets/login-seer-button.png");
 ASSETS_LOGIN_PANEL_TITLE    = cv2.imread("./assets/login-reward-title.png");
 ASSETS_EXIT_LOGIN_PANEL     = cv2.imread("./assets/exit-login-reward.png");
-current_goal = 'PET_YARD' # PET_YARD, REWARDER, REWARDER_ENTER
+current_goal = 'EXIT_ADS' # EXIT_ADS, PET_YARD, REWARDER, REWARDER_BUTTON, GO_TO_LOGIN_SEER, LOGIN_SEER_BUTTON
 
 IS_DEBUG = os.getenv('DEBUG') == 'TRUE' 
 IS_DEBUG and print("DEBUG MODE>>>>")
@@ -42,10 +42,6 @@ def accessRewardRoom(cv2, screen):
     return True;
 
 def moveToLoginSeer(cv2, screen):
-    #pag.keyDown('ctrl')
-    #keyPress('w')
-    #pag.keyUp('ctrl')
-    #sys.exit(0)
     keyPress("w")
     keyPress("a")
     login_reward_button = getCoordTemplate(cv2, ASSETS_LOGIN_SEER_BUTTON, screen, 0.8)
@@ -62,6 +58,22 @@ def accessLoginPanel(cv2, screen):
 
 def access_calendar_from_home(screen, cv2):
     global current_goal;
+
+    if current_goal == 'EXIT_ADS':
+        # focus on game
+        pag.doubleClick(x=720+config.SCREEN_LEFT_PADDING, y=config.SCREEN_TOP_PADDING + 25)
+        pag.doubleClick(x=720+config.SCREEN_LEFT_PADDING, y=config.SCREEN_TOP_PADDING + 25)
+
+        # exit ads by double tap 'o', only happens once
+        keyPress('o')
+        time.sleep(2)
+        keyPress('o')
+
+        # re-set orientation to look straight north
+        keyPress('z')
+        keyPress('z')
+
+        current_goal = "REWARDER"
 
     if current_goal == 'PET_YARD' and moveToPetYard(cv2, screen):
         current_goal = 'REWARDER'
@@ -105,3 +117,8 @@ def select_calendar_dates(screen, cv2):
         print("cannot see exit button for reward panel")
         return;
     pag.doubleClick(x=config.SCREEN_LEFT_PADDING+exit_button[1]+65, y = config.SCREEN_TOP_PADDING+exit_button[0]+5)
+
+    pag.keyDown('ctrl')
+    keyPress('w')
+    pag.keyUp('ctrl')
+    sys.exit(0)

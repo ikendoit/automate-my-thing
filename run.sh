@@ -3,9 +3,9 @@
 type=$1
 debug=FALSE
 
-#count=0;
+count=1;
 
-#while true; do
+while true; do
 	google-chrome https://www.realmofthemadgod.com
 
 	case $1 in
@@ -20,9 +20,11 @@ debug=FALSE
 			;;
 	esac
 
-	sleep 2
-	#((count=count+1))
-	#echo "$count"
-#done;
+	if [ $? = 0 ]; then
+		echo "finished, got the calendar, after $count tries"
+		break;
+	fi
 
-#echo "final count: $count"
+	sleep 2
+	((count=count+1))
+done;

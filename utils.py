@@ -5,6 +5,7 @@ import pyautogui as pag
 from mss import mss
 from PIL import Image
 import os
+import sys
 import config
 
 IS_DEBUG = os.getenv('DEBUG') == 'TRUE' 
@@ -12,6 +13,7 @@ sct = mss()
 monitorSelection = sct.monitors[1]
 monitorFormat = {"top": config.SCREEN_TOP_PADDING, "left": config.SCREEN_LEFT_PADDING, "width": config.CANVAS_WIDTH, "height": config.CANVAS_HEIGHT}
 THRESHOLD_MATCH_TEMPLATE = 0.6;
+count_uncertainty = 0
 
 # receive the "cv2.absdiff" between 2 images in float[]
 #   return the middlepoint of the longest pixel line (horizontally) in array
@@ -143,11 +145,26 @@ def positionToObject(target, char):
         return False
 
 def moveToObject(cv2, screen, image_object, offSetY=0, offSetX=0, threshold=0.6):    
+
+    global count_uncertainty;
+
     target_object = getCoordTemplate(cv2, image_object, screen, threshold)
+
     if target_object is None:
-        print("not sure what im doing")
+
+        count_uncertainty = count_uncertainty + 1
+        if count_uncertainty > 50:
+            pag.keyDown('ctrl')
+            keyPress('w')
+            pag.keyUp('ctrl')
+            print("failed, walked too much")
+            sys.exit(1);
+
+        IS_DEBUG and print("not sure what im doing")
         keyPress('w')
         return False;
+
+    count_uncertainty = 0
     IS_DEBUG and highlightInImage(screen, target_object[0], target_object[1])
 
     return positionToObject((target_object[0]+offSetY, target_object[1]+offSetX), (445, 300))
