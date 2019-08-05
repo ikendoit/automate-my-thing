@@ -99,9 +99,9 @@ def mss_grab_screen():
 
     except Exception as e:
         print('exiting... closing display', e)
+        exitTab();
         cv2.destroyAllWindows()
         traceback.print_exc()
-        exitTab();
         print("failed, met error")
         sys.exit(1)
 

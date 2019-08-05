@@ -9,6 +9,7 @@ import sys
 import config
 
 IS_DEBUG = os.getenv('DEBUG') == 'TRUE' 
+IS_LINUX = os.getenv('GDMSESSION') == 'ubuntu'
 sct = mss()
 monitorSelection = sct.monitors[1]
 monitorFormat = {"top": config.SCREEN_TOP_PADDING, "left": config.SCREEN_LEFT_PADDING, "width": config.CANVAS_WIDTH, "height": config.CANVAS_HEIGHT}
@@ -101,11 +102,14 @@ def highlightInImage(img, ycoord, xcoord):
 """
 
 def exitTab():
-    pag.keyDown('ctrl')
-    pag.keyDown('command')
-    keyPress('w')
-    pag.keyUp('ctrl')
-    pag.keyUp('command')
+    if IS_LINUX:
+        pag.keyDown('ctrl')
+        keyPress('w')
+        pag.keyUp('ctrl')
+    else:
+        pag.keyDown('command')
+        keyPress('w')
+        pag.keyUp('command')
 
 def keyPress(key, times=1):
     for i in range(0,times):

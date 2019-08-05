@@ -73,7 +73,7 @@ def access_calendar_from_home(screen, cv2):
         keyPress('z')
         keyPress('z')
 
-        current_goal = "REWARDER"
+        current_goal = "PET_YARD"
 
     if current_goal == 'PET_YARD' and moveToPetYard(cv2, screen):
         current_goal = 'REWARDER'
