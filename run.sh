@@ -6,7 +6,12 @@ debug=FALSE
 count=1;
 
 while true; do
-	google-chrome https://www.realmofthemadgod.com
+
+	if [ $XDG_SESSION_DESKTOP = 'ubuntu' ]; then
+		google-chrome https://www.realmofthemadgod.com
+	else 
+		open -a "Google Chrome" https://www.realmofthemadgod.com
+	fi
 
 	case $1 in
 		'fight')
