@@ -118,7 +118,5 @@ def select_calendar_dates(screen, cv2):
         return;
     pag.doubleClick(x=config.SCREEN_LEFT_PADDING+exit_button[1]+65, y = config.SCREEN_TOP_PADDING+exit_button[0]+5)
 
-    pag.keyDown('ctrl')
-    keyPress('w')
-    pag.keyUp('ctrl')
+    exitTab()
     sys.exit(0)

@@ -100,6 +100,13 @@ def highlightInImage(img, ycoord, xcoord):
                           \$$$$$$                                                   
 """
 
+def exitTab():
+    pag.keyDown('ctrl')
+    pag.keyDown('command')
+    keyPress('w')
+    pag.keyUp('ctrl')
+    pag.keyUp('command')
+
 def keyPress(key, times=1):
     for i in range(0,times):
         pag.keyDown(key);
@@ -154,9 +161,7 @@ def moveToObject(cv2, screen, image_object, offSetY=0, offSetX=0, threshold=0.6)
 
         count_uncertainty = count_uncertainty + 1
         if count_uncertainty > 50:
-            pag.keyDown('ctrl')
-            keyPress('w')
-            pag.keyUp('ctrl')
+            exitTab()
             print("failed, walked too much")
             sys.exit(1);
 
