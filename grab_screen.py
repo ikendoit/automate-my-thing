@@ -101,5 +101,6 @@ def mss_grab_screen():
         print('exiting... closing display', e)
         cv2.destroyAllWindows()
         traceback.print_exc()
+        sys.exit(1)
 
 mss_grab_screen()
