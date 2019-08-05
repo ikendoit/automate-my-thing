@@ -55,10 +55,10 @@ def detectMode(image):
         currentMode == "GAME_HOME"
         return;
 
-    if AUTO_MODE == 'LOGIN' and (currentMode == "GAME_HOME" or isAtEventUpdate is not None):
-        pag.click(x=config.SCREEN_LEFT_PADDING+isCharSelection[1]+240, y=config.SCREEN_TOP_PADDING+isCharSelection[0] + 10)
-        currentMode == "GAME_HOME"
-        return;
+    #if AUTO_MODE == 'LOGIN' and (currentMode == "GAME_HOME" or isAtEventUpdate is not None):
+    #    pag.click(x=config.SCREEN_LEFT_PADDING+isAtEventUpdate[1]+240, y=config.SCREEN_TOP_PADDING+isAtEventUpdate[0] + 10)
+    #    currentMode == "GAME_HOME"
+    #    return;
 
     if AUTO_MODE == 'LOGIN' and (currentMode == "GAME_HOME" or isAtUserProfileBar is not None):
         access_calendar_from_home(image, cv2)
