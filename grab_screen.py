@@ -60,13 +60,14 @@ def detectMode(image):
     #    currentMode == "GAME_HOME"
     #    return;
 
+    #if AUTO_MODE == 'LOGIN' and (currentMode == "GAME_HOME" or isAtCalendar is not None):
+    #    select_calendar_dates(image, cv2)
+    #    currentMode == "GAME_HOME" # Could also change AUTO_MODE to "FIGHT_MODE"
+    #    return;
+
+
     if AUTO_MODE == 'LOGIN' and (currentMode == "GAME_HOME" or isAtUserProfileBar is not None):
         access_calendar_from_home(image, cv2)
-        currentMode == "GAME_HOME" # Could also change AUTO_MODE to "FIGHT_MODE"
-        return;
-
-    if AUTO_MODE == 'LOGIN' and (currentMode == "GAME_HOME" or isAtCalendar is not None):
-        select_calendar_dates(image, cv2)
         currentMode == "GAME_HOME" # Could also change AUTO_MODE to "FIGHT_MODE"
         return;
 
