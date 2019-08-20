@@ -30,13 +30,12 @@ def moveToPetYard(cv2, screen):
 
 def moveToRewarder(cv2, screen):
     IS_DEBUG and print("to rewarder")
-    return moveToObject(cv2, screen, ASSETS_REWARDER, 20, 25);
+    return moveToObject(cv2, screen, ASSETS_REWARDER, 20, 35);
 
 def accessRewardRoom(cv2, screen):
     target_object = getCoordTemplate(cv2, ASSETS_ENTER_REWARDER, screen)
     if target_object is None:
         print("Cannot find access rewarder button");
-        pag.click(x=config.SCREEN_LEFT_PADDING+target_object[1]+70, y=config.SCREEN_TOP_PADDING+target_object[0]+55);
         return False
     pag.click(x=config.SCREEN_LEFT_PADDING+target_object[1]+70, y=config.SCREEN_TOP_PADDING+target_object[0]+55);
     return True;

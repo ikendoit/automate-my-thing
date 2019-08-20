@@ -162,7 +162,7 @@ def moveToObject(cv2, screen, image_object, offSetY=0, offSetX=0, threshold=0.6)
     target_object = getCoordTemplate(cv2, image_object, screen, threshold)
 
     if target_object is None:
-
+        keyPress('w')
         count_uncertainty = count_uncertainty + 1
         if count_uncertainty > 50:
             exitTab()
@@ -170,7 +170,6 @@ def moveToObject(cv2, screen, image_object, offSetY=0, offSetX=0, threshold=0.6)
             sys.exit(1);
 
         IS_DEBUG and print("not sure what im doing")
-        keyPress('w')
         return False;
 
     count_uncertainty = 0

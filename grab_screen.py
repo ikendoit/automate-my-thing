@@ -77,7 +77,7 @@ def detectMode(image):
         return;
 
     IS_DEBUG and print("not sure where we are in main :(");
-    time.sleep(1.8)
+    time.sleep(1)
 
 def mss_grab_screen():
 
